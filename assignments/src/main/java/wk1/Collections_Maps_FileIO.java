@@ -27,9 +27,9 @@ public class Collections_Maps_FileIO {
 			Matcher matcher = pattern.matcher(st);
 			boolean matchFound = matcher.find();
 			if(matchFound) {
-				System.out.println("Match Found");
+				System.out.println("Match found");
 			} else {
-				System.out.println(matchFound);
+				System.out.println("Match not found");
 			}
 		};
 		
