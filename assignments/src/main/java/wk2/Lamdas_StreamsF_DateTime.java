@@ -18,7 +18,7 @@ public class Lamdas_StreamsF_DateTime {
 	
 	public void start() {
 		
-		System.out.println("\n Week 2 \n");
+		System.out.println("========== \n" + "  Week 2 \n" + "========== \n");
 		
 		Date date = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
