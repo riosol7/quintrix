@@ -21,7 +21,7 @@ public class mySQL {
 				
 				try {
 					// Connect to the db
-					Connection connection = DriverManager.getConnection(url, user ,pass);
+					Connection connection = DriverManager.getConnection(url, user, pass);
 					System.out.println("Connection is successful to db " + url + "\n");
 					
 					// OUTER JOIN not working in mySQL?	
@@ -39,7 +39,7 @@ public class mySQL {
 					while (rs.next()) {
 						for (int i = 1; i <= columnsNumber; i++) {
 					           
-							if (i > 1) System.out.print(",  ");
+							if (i > 1) System.out.print(" | ");
 							
 					        String columnValue = rs.getString(i);
 					        System.out.print(rsmd.getColumnName(i) + ": " + columnValue);
