@@ -14,11 +14,11 @@ public class EmployeeSLImpl implements EmployeeSL {
 	@Autowired
 	EmployeeDAO employeeDAO;
 
-	@Override
-	public Employee getEmployee(int id) {
-		// TODO Auto-generated method stub
-		return employeeDAO.findById(id);
-	}
+//	@Override
+//	public Employee getEmployee(int id) {
+//		// TODO Auto-generated method stub
+//		return employeeDAO.findById(id);
+//	}
 
 	@Override
 	public List<Employee> getEmployees() {

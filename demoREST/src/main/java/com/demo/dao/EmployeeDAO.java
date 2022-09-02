@@ -26,13 +26,13 @@ public class EmployeeDAO implements DAO <Employee, Integer>{
 
 	//READ
 	
-	@Override
-	public Employee findById(int id) {
-
-//		String sql = "SELECT * FROM userdb.employee WHERE id = ?";
-
-		return null;
-	}
+//	@Override
+//	public Employee findById(int id) {
+//
+////		String sql = "SELECT * FROM userdb.employee WHERE id = ?";
+//
+//		return null;
+//	}
 
 	@Override
 	public List<Employee> findAll() {

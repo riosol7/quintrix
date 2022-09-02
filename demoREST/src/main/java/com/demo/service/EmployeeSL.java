@@ -5,7 +5,7 @@ import java.util.List;
 import com.demo.model.*;
 
 public interface EmployeeSL {
-	Employee getEmployee(int id);
+//	Employee getEmployee(int id);
 	List<Employee> getEmployees();
 	int addEmployee(Employee employee);
 	int updateEmployee(Employee employee, int id);
