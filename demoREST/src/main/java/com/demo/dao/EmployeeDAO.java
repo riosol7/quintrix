@@ -4,6 +4,7 @@ package com.demo.dao;
 import com.demo.model.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,7 +14,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmployeeDAO implements DAO <Employee, Integer>{
+public class EmployeeDAO implements DAO <Employee>{
 	
 	/*
 	It simplifies the use of JDBC and helps to avoid common errors.
@@ -25,14 +26,12 @@ public class EmployeeDAO implements DAO <Employee, Integer>{
 	JdbcTemplate jdbcTemplate;
 
 	//READ
-	
-//	@Override
-//	public Employee findById(int id) {
-//
-////		String sql = "SELECT * FROM userdb.employee WHERE id = ?";
-//
-//		return null;
-//	}
+	@Override
+	public Object findById(int id) {
+		String sql = "SELECT * FROM userdb.employee WHERE id = ?";
+		
+		return jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper(Employee.class));
+	}
 
 	@Override
 	public List<Employee> findAll() {
@@ -76,6 +75,7 @@ public class EmployeeDAO implements DAO <Employee, Integer>{
 		
 		return jdbcTemplate.update(sql, id);
 	}
+
 
 
 

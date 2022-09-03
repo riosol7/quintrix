@@ -22,11 +22,11 @@ public class EmployeeController {
 		return employeeSL.getEmployees();
 	};
 	
-//	// One employee by ID
-//	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
-//	public Object getEmployee(@PathVariable int id) {
-//		return employeeSL.getEmployee(id);
-//	};
+	// One employee by ID
+	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
+	public Object getEmployee(@PathVariable int id) {
+		return employeeSL.getEmployee(id);
+	};
 	
 	//CREATE - new employee
 	@PostMapping("/employee")
