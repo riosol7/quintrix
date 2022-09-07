@@ -7,7 +7,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,5 +47,16 @@ public class HelloController {
 		HttpEntity request = new HttpEntity(employee, headers);
 		return restTemplate.exchange("http://localhost:8080/employee", HttpMethod.POST, request, Object.class);		
 	};
+
+    @PutMapping("/test")
+    public void putEmployee(@RequestBody Employee employee){
+        HttpEntity<Employee> request = new HttpEntity<>(employee);
+        restTemplate.put("http://localhost:8080/employee/", request);
+    }
+    
+    @DeleteMapping("/test/{id}")
+    public void deleteEmployee(@PathVariable int id){
+        restTemplate.delete("http://localhost:8080/employee/" + id);
+    }
 
 }
