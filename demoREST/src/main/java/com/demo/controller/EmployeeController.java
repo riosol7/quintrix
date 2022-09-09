@@ -17,33 +17,33 @@ public class EmployeeController {
 	EmployeeSL employeeSL;
 	
 	//READ - all employees
-	@RequestMapping(method = RequestMethod.GET, value = "/employees")
+	@RequestMapping(method = RequestMethod.GET, value = "/employee")
 	public List<Employee> employees() {
-		return employeeSL.getEmployees();
+		return employeeSL.findAll();
 	};
 	
 	// One employee by ID
 	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
-	public Object getEmployee(@PathVariable int id) {
-		return employeeSL.getEmployee(id);
+	public Employee getEmployee(@PathVariable int id) {
+		return employeeSL.findById(id);
 	};
 	
 	//CREATE - new employee
 	@PostMapping("/employee")
-	public int addEmployee(@RequestBody Employee employee) {
-		return employeeSL.addEmployee(employee);
+	public Employee addEmployee(@RequestBody Employee employee) {
+		return employeeSL.post(employee);
 	};
 	
 	//UPDATE - existing record
-	@PutMapping("/employee/{id}")
-	public int updateEmployee(@RequestBody Employee employee, @PathVariable int id) {
-		return employeeSL.updateEmployee(employee, id);
+	@PutMapping("/employee")
+	public void updateEmployee(@RequestBody Employee employee) {
+		employeeSL.put(employee);
 	};
 	
 	//DELETE - record
-	@DeleteMapping("employee/{id}")
-	public int deleteEmployee(@PathVariable int id) {
-		return employeeSL.deleteEmployee(id);
+	@DeleteMapping("/employee/{id}")
+	public void deleteEmployee(@PathVariable int id) {
+		employeeSL.delete(id);
 	};
 	
 }

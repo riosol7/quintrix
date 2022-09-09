@@ -15,33 +15,33 @@ public class EmployeeSLImpl implements EmployeeSL {
 	EmployeeDAO employeeDAO;
 
 	@Override
-	public Object getEmployee(int id) {
+	public Employee findById(int id) {
 		// TODO Auto-generated method stub
 		return employeeDAO.findById(id);
 	}
 
 	@Override
-	public List<Employee> getEmployees() {
+	public List<Employee> findAll() {
 		// TODO Auto-generated method stub
 		return employeeDAO.findAll();
 	}
 
 	@Override
-	public int addEmployee(Employee employee) {
+	public Employee post(Employee employee) {
 		// TODO Auto-generated method stub
-		return employeeDAO.add(employee);
+		return employeeDAO.post(employee);
 	}
 
 	@Override
-	public int updateEmployee(Employee employee, int id) {
+	public void put(Employee employee) {
 		// TODO Auto-generated method stub
-		return employeeDAO.update(employee, id);
+		employeeDAO.put(employee);
 	}
 
 	@Override
-	public int deleteEmployee(int id) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
-		return employeeDAO.delete(id);
+		employeeDAO.delete(id);
 	}
 	
 

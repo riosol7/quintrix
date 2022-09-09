@@ -1,5 +1,10 @@
-package com.example.demo.model;
+package com.demo.model;
 
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonInclude;
+
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonIgnoreProperties(ignoreUnknown=true)
 public class Employee {
 	int id;
 	String firstname;
@@ -7,9 +12,15 @@ public class Employee {
 	String dept;
 	String location;
 	
-	public Employee(String firstname) {
+	public Employee() {
+		this.firstname = "pop";
+	};
+	
+	public Employee(String firstname, String lastname) {
 		// TODO Auto-generated constructor stub
 		this.firstname = firstname;
+		this.lastname = lastname;
+		
 	}
 
 	public Employee (int id, String firstname, String lastname, String dept){
@@ -22,6 +33,11 @@ public class Employee {
 	public Employee (int id, String firstname, String lastname, String dept, String location){
 		super();
 		this.location = location;
+	}
+
+	public Employee(String firstname) {
+		// TODO Auto-generated constructor stub
+		this.firstname = firstname;
 	}
 
 	public String getLocation() {

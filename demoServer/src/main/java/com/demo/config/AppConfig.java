@@ -1,11 +1,11 @@
-package com.example.demo.config;
+package com.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class appConfig {
+public class AppConfig {
 
 	@Bean
 	public RestTemplate restTemplate() {

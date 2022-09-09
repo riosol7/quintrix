@@ -1,0 +1,4 @@
+employee:
+  url: http://localhost:8080/employee/
+server:
+  port: 8081

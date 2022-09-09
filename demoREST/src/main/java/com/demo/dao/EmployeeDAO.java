@@ -27,10 +27,10 @@ public class EmployeeDAO implements DAO <Employee>{
 
 	//READ
 	@Override
-	public Object findById(int id) {
+	public Employee findById(int id) {
 		String sql = "SELECT * FROM userdb.employee WHERE id = ?";
 		
-		return jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper(Employee.class));
+		return (Employee) jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper(Employee.class));
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class EmployeeDAO implements DAO <Employee>{
 
 	//CREATE
 	@Override
-	public int add(Employee newEmployee) {
+	public Employee post(Employee newEmployee) {
 
 		Employee employee = new Employee();
 		
@@ -52,28 +52,30 @@ public class EmployeeDAO implements DAO <Employee>{
 		employee.setLastname(newEmployee.getLastname());
 		employee.setDept(newEmployee.getDept());
 		
-		String sql = "INSERT INTO userdb.employee(firstname, lastname, dept) VALUES(?,?,?)";
+		String sql = "INSERT INTO userdb.employee(firstname, lastname, dept) VALUES('" + employee.getFirstname() + "', '" + employee.getLastname() + "', '" + employee.getDept() + "')";
 		
-		return jdbcTemplate.update(sql, (Object[]) new String[]{employee.getFirstname(), employee.getLastname(), employee.getDept()});
+		jdbcTemplate.update(sql);
+		
+		return employee;
 	}
 
 	//UPDATE
 	@Override
-	public int update(Employee employee, int id) {
+	public void put(Employee employee) {
 		
 		String sql = "UPDATE userdb.employee SET firstname = ?, lastname = ?, dept = ? WHERE id = ?";
 		
-		return jdbcTemplate.update(sql, employee.getFirstname(), employee.getLastname(), employee.getDept(), id);
+		jdbcTemplate.update(sql, employee.getFirstname(), employee.getLastname(), employee.getDept(), employee.getId());
 		
 	}
 
 	//DELETE
 	@Override
-	public int delete(int id) {
+	public void delete(int id) {
 	
 		String sql = "DELETE FROM userdb.employee WHERE id = ?";
 		
-		return jdbcTemplate.update(sql, id);
+		jdbcTemplate.update(sql, id);
 	}
 
 
