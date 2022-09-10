@@ -15,7 +15,7 @@ public class RestServiceImpl implements RestService {
 	RestDAO restDAO;
 	
 	@Override
-	public Employee findById(int id) {
+	public List<Employee> findById(int id) {
 		return restDAO.findById(id);
 	}
 

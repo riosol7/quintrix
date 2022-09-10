@@ -15,7 +15,7 @@ public class EmployeeSLImpl implements EmployeeSL {
 	EmployeeDAO employeeDAO;
 
 	@Override
-	public Employee findById(int id) {
+	public List<Employee> findById(int id) {
 		// TODO Auto-generated method stub
 		return employeeDAO.findById(id);
 	}

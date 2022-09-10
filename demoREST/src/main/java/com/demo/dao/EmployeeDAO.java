@@ -4,7 +4,6 @@ package com.demo.dao;
 import com.demo.model.Employee;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,10 +26,10 @@ public class EmployeeDAO implements DAO <Employee>{
 
 	//READ
 	@Override
-	public Employee findById(int id) {
+	public List<Employee> findById(int id) {
 		String sql = "SELECT * FROM userdb.employee WHERE id = ?";
 		
-		return (Employee) jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper(Employee.class));
+		return jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper(Employee.class));
 	}
 
 	@Override

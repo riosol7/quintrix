@@ -18,31 +18,31 @@ public class EmployeeController {
 	
 	//READ - all employees
 	@RequestMapping(method = RequestMethod.GET, value = "/employee")
-	public List<Employee> employees() {
+	public List<Employee> findAll() {
 		return employeeSL.findAll();
 	};
 	
 	// One employee by ID
 	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
-	public Employee getEmployee(@PathVariable int id) {
+	public List<Employee> findById(@PathVariable int id) {
 		return employeeSL.findById(id);
 	};
 	
 	//CREATE - new employee
 	@PostMapping("/employee")
-	public Employee addEmployee(@RequestBody Employee employee) {
+	public Employee post(@RequestBody Employee employee) {
 		return employeeSL.post(employee);
 	};
 	
 	//UPDATE - existing record
 	@PutMapping("/employee")
-	public void updateEmployee(@RequestBody Employee employee) {
+	public void put(@RequestBody Employee employee) {
 		employeeSL.put(employee);
 	};
 	
 	//DELETE - record
 	@DeleteMapping("/employee/{id}")
-	public void deleteEmployee(@PathVariable int id) {
+	public void delete(@PathVariable int id) {
 		employeeSL.delete(id);
 	};
 	

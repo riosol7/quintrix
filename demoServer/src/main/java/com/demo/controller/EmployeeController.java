@@ -25,8 +25,8 @@ public class EmployeeController {
 	RestService restService;
 
 	
-	@GetMapping("/employee/{id}")
-	public Employee findById(@PathVariable int id) {
+	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
+	public List<Employee> findById(@PathVariable int id) {
 
 		return restService.findById(id);
 	};

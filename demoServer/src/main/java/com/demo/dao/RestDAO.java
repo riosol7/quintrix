@@ -21,9 +21,9 @@ public class RestDAO implements DAO<Employee> {
 	String url;
 	
 	@Override
-	public Employee findById(int id) {
+	public List<Employee> findById(int id) {
 		
-		ResponseEntity<Employee> res = ResponseEntity.ok(restTemplate.getForObject(url + id, Employee.class));
+		ResponseEntity<List<Employee>> res = ResponseEntity.ok(restTemplate.getForObject(url + id, List.class));
 		
 		return res.getBody();
 	}
