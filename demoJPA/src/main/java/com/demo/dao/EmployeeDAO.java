@@ -15,12 +15,13 @@ import com.demo.entity.Employee;
 public class EmployeeDAO implements DAO <Employee>{
 	
 	@PersistenceContext
-	private EntityManager manager;
+	EntityManager manager;
 
 	@Override
 	public List<Employee> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Employee> employee = manager.createQuery("SELECT a FROM EmployeeEntity a", Employee.class).getResultList();
+		
+		return employee;
 	}
 
 	@Override
@@ -33,18 +34,13 @@ public class EmployeeDAO implements DAO <Employee>{
 
 	@Override
 	public Employee post(Employee employee) {
-		try {
-			manager.persist(employee);
-			return employee;
-		} catch(Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		manager.persist(employee);
+		
+		return employee;	
 	}
 
 	@Override
 	public void put(Employee object) {
-		// TODO Auto-generated method stub
 		
 	}
 
