@@ -1,0 +1,9 @@
+db.getCollection('employee').find({});
+
+db.getCollection('employee').insert({firstName:"new", lastName:"test"});
+
+db.getCollection('employee').remove({firstName:"new"},{justOne:true});
+
+db.getCollection('employee').update({firstName:"new"},{$set:{lastName:"test!!"}}, {multi:false});
+
+db.getCollection('employee').aggregate([{$match:{firstName:"test!!"}},{$group:{ _id:"$firstName", totalAge:{$sum:"$age"} } }]);

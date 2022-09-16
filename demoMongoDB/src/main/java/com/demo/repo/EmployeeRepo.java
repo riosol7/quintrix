@@ -11,4 +11,6 @@ public interface EmployeeRepo extends MongoRepository <Employee, Integer> {
 
 	Optional<Employee> findById(String id);
 
+	void deleteById(String id);
+
 } 

@@ -1,22 +1,30 @@
 package com.demo.entity;
 
-import org.springframework.data.annotation.Id;
-//import org.springframework.data.mongodb.core.mapping.Document;
+//import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Document(collection = "ticket")
 public class Ticket {
 
-	@Id
-	String id;
-	
 	String type;
 	String amount;
 	
+	public void ticket() {}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	};
 	
 }

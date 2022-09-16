@@ -3,9 +3,12 @@ package com.demo.entity;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+//import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+//import org.springframework.data.mongodb.core.mapping.Unwrapped;
+//import org.springframework.data.mongodb.core.mapping.Unwrapped.OnEmpty;
 
-@Document(collection = "test.employee")
+@Document(collection = "employee")
 public class Employee {
 
 	@Id
@@ -13,7 +16,8 @@ public class Employee {
 	
 	String firstName;
 	String lastName;
-	
+	int age;
+
 	List <Ticket> tickets;
 	
 	public void employee() {};
@@ -23,6 +27,13 @@ public class Employee {
 		this.lastName = lastName;
 	}
 	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 	
 	public List<Ticket> getTickets() {
 		return tickets;
