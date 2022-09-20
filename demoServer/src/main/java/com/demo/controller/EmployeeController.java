@@ -30,15 +30,16 @@ public class EmployeeController {
 	
 
 	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
-	@CircuitBreaker(name="serviceA", fallbackMethod = "fallback")
+	@CircuitBreaker(name="employee", fallbackMethod = "getAll")
 	public List<Employee> findById(@PathVariable int id) {
 		
 		return restService.findById(id);
 	};
 	
-	public List<Employee> fallback(Exception e) {
+//	Fallback method must return the same type
+	public List<Employee> getAll(Exception e) {
 		
-		return Stream.of( new Employee("test")).collect(Collectors.toList());
+		return Stream.of( new Employee("testing for failure")).collect(Collectors.toList());
 	};
 	
 	@GetMapping("/employee")

@@ -34,10 +34,12 @@
 			<artifactId>spring-cloud-starter</artifactId>
 		</dependency>
 		
+		<!-- To find the health of your microservicves --> 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+		<!-- Keep send the metrics to the actuator so that we can track the circuit breaker status -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
