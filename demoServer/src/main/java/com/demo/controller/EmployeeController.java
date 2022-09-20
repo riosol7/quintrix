@@ -1,6 +1,8 @@
 package com.demo.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.model.Employee;
 import com.demo.service.RestService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 
 @RestController
 public class EmployeeController {
@@ -23,12 +27,18 @@ public class EmployeeController {
 
 	@Autowired
 	RestService restService;
-
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
-	public List<Employee> findById(@PathVariable int id) {
 
+	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}")
+	@CircuitBreaker(name="serviceA", fallbackMethod = "fallback")
+	public List<Employee> findById(@PathVariable int id) {
+		
 		return restService.findById(id);
+	};
+	
+	public List<Employee> fallback(Exception e) {
+		
+		return Stream.of( new Employee("test")).collect(Collectors.toList());
 	};
 	
 	@GetMapping("/employee")
@@ -39,7 +49,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/employee", method = RequestMethod.POST)
 	public Employee post(@RequestBody Employee employee) {
-
+		
 		return restService.post(employee);
 	};
 

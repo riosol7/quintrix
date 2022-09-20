@@ -3,6 +3,8 @@ package com.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,28 +25,28 @@ public class EmployeeController {
 	EmployeeService service;
 	
 	@GetMapping
-	public List<Employee> findAll() {
-		return service.findAll();
+	public ResponseEntity<List<Employee>> findAll() {
+		return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
 	};
 	
 	@GetMapping("/{id}")
-	public Employee findById(@PathVariable String id) {
-		return service.findById(id);
+	public ResponseEntity<Employee> findById(@PathVariable String id) {
+		return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public Employee post(@RequestBody Employee employee) {
-		return service.post(employee);
+	public ResponseEntity<Employee> post(@RequestBody Employee employee) {
+		return new ResponseEntity<>(service.post(employee), HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public Employee put(@RequestBody Employee employee) {
-		return service.put(employee);
+	public ResponseEntity<Employee> put(@RequestBody Employee employee) {
+		return new ResponseEntity<>(service.put(employee), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String delete(@PathVariable String id) {
-		return service.delete(id);
+	public ResponseEntity<String> delete(@PathVariable String id) {
+		return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
 	}
 	
 }

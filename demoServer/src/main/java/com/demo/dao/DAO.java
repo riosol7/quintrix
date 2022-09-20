@@ -2,8 +2,11 @@ package com.demo.dao;
 
 import java.util.List;
 
+import com.demo.model.Employee;
+
+
 public interface DAO<T> {
-	public List<T> findById(int id);
+	public List<Employee> findById(int id);
 	public List<T> findAll();
 	public T post(T object);
 	public void put(T object);
