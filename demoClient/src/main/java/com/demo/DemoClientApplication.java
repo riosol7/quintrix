@@ -2,12 +2,14 @@ package com.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-public class DemoConfigServerApplication {
+@EnableDiscoveryClient
+public class DemoClientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoConfigServerApplication.class, args);
+		SpringApplication.run(DemoClientApplication.class, args);
 	}
 
 }
