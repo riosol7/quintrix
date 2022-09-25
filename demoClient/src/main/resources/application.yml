@@ -1,15 +1,14 @@
 eureka:
-  client: 
-    enabled: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
   instance:
-    hostname: ${vcap.application.uris[0]:localhost}
-    lease-expiration-duration-in-seconds: 20
-    lease-renewal-interval-in-seconds: 10
-    prefer-ip-address: true
+    hostname: localhost
 server:
-  port: 8081
+  port: 9090
+  
 spring:
   application:
-    name: 'client1'
+    name: Payment-Service

@@ -16,7 +16,7 @@ public class EmployeeService {
 	EmployeeRepo repo;
 	
 	public List<Employee> findAll() {
-		System.out.println("Employees: "+ repo.findAll());
+//		System.out.println("Employees: "+ repo.findAll());
 		return repo.findAll();
 	};
 	
