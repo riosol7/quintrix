@@ -10,11 +10,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Lazy;
 
 @RestController
+// To reflect every change to the provider/configServer, RefreshScope will instantly modify the client application
+@RefreshScope
 public class EmployeeController {
 
 	@Autowired
+	// Due to the refresh scope, will cause circular dependency injection to the rest template. 
+	// To avoid this error we used the annotation @Lazy  
+	@Lazy
 	private RestTemplate template;
 	
 	// From demoConfigClient's request goes to the demoConfigServer and in the properties file will provide the key
